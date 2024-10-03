@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import { createBackend } from '@backstage/backend-defaults';
-import { dynamicPluginsSchemasServiceFactory } from '@backstage/backend-dynamic-feature-service';
+import { dynamicPluginsSchemasServiceFactoryWithOptions } from '@backstage/backend-dynamic-feature-service';
 import { PackageRoles } from '@backstage/cli-node';
 import { legacyPlugin } from '@backstage/backend-common';
 
@@ -23,7 +23,7 @@ import * as path from 'path';
 const backend = createBackend();
 
 backend.add(
-  dynamicPluginsSchemasServiceFactory({
+  dynamicPluginsSchemasServiceFactoryWithOptions({
     schemaLocator(pluginPackage) {
       const platform = PackageRoles.getRoleInfo(
         pluginPackage.manifest.backstage.role,
